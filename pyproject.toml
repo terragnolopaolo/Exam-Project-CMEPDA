@@ -54,7 +54,7 @@ Homepage = "https://github.com/terragnolopaolo/Exam-Project-CMEPDA"
 
 # Specify the python file that hatchling should read the version string from.
 [tool.hatch.version]
-path = "Exam-Project-CMEPDA/src/_version.py"
+path = "src/_version.py"
 
 # ruff configuration, see
 # https://docs.astral.sh/ruff/configuration/
