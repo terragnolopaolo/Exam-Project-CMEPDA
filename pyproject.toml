@@ -21,7 +21,7 @@ build-backend = "hatchling.build"
 #   relies on, so they get automatically installed (if necessary) when
 #   the package is pip-installed.
 [project]
-name = "Exam-Project-CMEPDA"
+name = "exam_project_cmepda"
 dynamic = ["version"]
 description = "A repository about making repositories"
 readme = "README.md"
@@ -54,7 +54,7 @@ Homepage = "https://github.com/terragnolopaolo/Exam-Project-CMEPDA"
 
 # Specify the python file that hatchling should read the version string from.
 [tool.hatch.version]
-path = "src/Exam-Project-CMEPDA/_version.py"
+path = "src/exam_project_cmepda/_version.py"
 
 # ruff configuration, see
 # https://docs.astral.sh/ruff/configuration/
