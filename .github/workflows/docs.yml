@@ -5,26 +5,21 @@ on:
     branches: [main]
 
 jobs:
-  pages:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.13
-    - name: Install doc dependencies
-      run: |
-        python -m pip install --upgrade pip
-        # se usi pyproject.toml con optional-dependencies
-        pip install ".[docs]"
-        # oppure, se hai requirements.txt in docs/
-        # pip install -r docs/requirements.txt
-    - id: deployment
-      uses: sphinx-notes/pages@v3
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[docs]"
+      - name: Build Sphinx documentation
+        run: sphinx-build -b html docs _build/html
+      - name: Deploy Pages
+        uses: actions/deploy-pages@v1
+        with:
+          path: _build/html
