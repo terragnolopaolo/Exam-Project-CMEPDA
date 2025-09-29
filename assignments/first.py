@@ -1,27 +1,32 @@
-from pathlib import Path
-import argparse
-from loguru import logger
 from collections import Counter
+from pathlib import Path
 from typing import Dict
+import argparse
 import string
 from time import time
-import matplotlib.pyplot as plt 
 
-# Funzione che permette di estrarre dal file il solo testo del libro (esclude preambolo, licenza, ecc)
+from loguru import logger
+import matplotlib.pyplot as plt
+
+# Funzione che permette di estrarre dal file il 
+# solo testo del libro (esclude preambolo, licenza, ecc)
 def extract_main_text(text:str, skip_extra: bool = False) -> str:
-    # Restituisce il testo completo se skip_extra è falso (== se non richiedo di estrarre il main text)
+    # Restituisce il testo completo se skip_extra 
+    # è falso (== se non richiedo di estrarre il main text)
     if not skip_extra:
         return text
     
     if skip_extra:
-        # Cerca i delimitatori tipici dei libri Project Gutenberg (in lower case perché viene sempre chiamata su testi in lower case)
+        # Cerca i delimitatori tipici dei libri Project Gutenberg
+        # (in lower case perché viene sempre chiamata su testi in lower case)
         start_marker = "*** start of the project gutenberg ebook"
         end_marker   = "*** end of the project gutenberg ebook"
 
         start_idx = text.find(start_marker)
         end_idx = text.find(end_marker)
 
-        # Controllo se ho trovato i marker (in caso contrario, gli idx vengono inizializzati automaticamente a -1)
+        # Controllo se ho trovato i marker (in caso contrario, 
+        # gli idx vengono inizializzati automaticamente a -1)
         if start_idx != -1 and end_idx != -1:
             # Prendi solo il testo tra start e end
             return text[start_idx + len(start_marker): end_idx]
