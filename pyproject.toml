@@ -28,7 +28,7 @@ readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.7"
 authors = [
-  { name = "Luca Baldini", email = "luca.baldini@unipi.it" }
+  { name = "Paolo Terragnolo", email = "p.terragnolo@studenti.unipi.it" }
   ]
 dependencies = [
   "numpy",
@@ -54,7 +54,7 @@ Homepage = "https://github.com/terragnolopaolo/Exam-Project-CMEPDA"
 
 # Specify the python file that hatchling should read the version string from.
 [tool.hatch.version]
-path = "src/Exam-Project-CMEPDA/_version.py"
+path = "src/Exam-Project-CMEPDA/src/_version.py"
 
 # ruff configuration, see
 # https://docs.astral.sh/ruff/configuration/
